@@ -20,11 +20,13 @@ def lambda_handler(event, context):
     # Return a response
     if obj is None:
         return {
-            'statusCode': 404,
-            'body': CDN_PREFIX + 'not_found.png'
+            'statusCode': 400,
+            "headers": {"Access-Control-Allow-Origin":"*"},
+            "body": json.dumps( { "Status": "Failure", "Reason": "Invalid tag", "Image": CDN_PREFIX + "not_found.png" } )
         }
     else:
         return {
             'statusCode': 200,
-            'body': CDN_PREFIX + obj['Key']
+            "headers": {"Access-Control-Allow-Origin":"*"},
+            "body": json.dumps( { "Status": "Success", "Image": CDN_PREFIX + obj['Key'] } )
         }
