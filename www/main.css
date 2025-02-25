@@ -53,3 +53,9 @@ div #success-message, #results-message {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+div #image-container img {
+  max-width: 450px;
+  padding-bottom: 15px;
+  height: auto;
+}
